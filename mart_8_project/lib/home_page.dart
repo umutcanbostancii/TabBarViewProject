@@ -24,32 +24,66 @@ class _MyHomePageState extends State<MyHomePage>
         title: const Text("Ana Sayfa"),
         titleTextStyle:
             const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-        bottom: TabBar(controller: _tabController, tabs: [
-          IconButton(
-            icon: Icon(Icons.home),
-            onPressed: () {
+        bottom: TabBar(
+            onTap: (tabIndex) {
               setState(() {
-                _tabController.index = 0;
+                _tabController.index = tabIndex;
               });
             },
-          ),
-          IconButton(
-            icon: Icon(Icons.abc),
-            onPressed: () {
-              _tabController.index = 1;
-            },
-          ),
-          IconButton(
-            icon: Icon(Icons.person),
-            onPressed: () {
-              _tabController.index = 2;
-            },
-          ),
-        ]),
+            indicatorColor: Colors.transparent,
+            indicatorWeight: 2,
+            indicatorSize: TabBarIndicatorSize.label,
+            padding: const EdgeInsets.all(8),
+            controller: _tabController,
+            tabs: const [
+              Icon(
+                Icons.home_outlined,
+                size: 27,
+              ),
+              Icon(
+                Icons.abc_outlined,
+                size: 27,
+              ),
+              Icon(
+                Icons.person_outlined,
+                size: 27,
+                shadows: [
+                  Shadow(color: Colors.black, offset: Offset.infinite),
+                ],
+              ),
+            ]),
       ),
-      body: Column(
-        children: [],
+
+      body: DefaultTabController(
+        length: 3,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            _tabController.index == 0
+                ? Center(
+                    child: Text(
+                      "Ana sayfam",
+                      style: _style,
+                    ),
+                  )
+                : _tabController.index == 1
+                    ? Center(
+                        child: Text(
+                          "Egitim Sayfam",
+                          style: _style,
+                        ),
+                      )
+                    : Center(
+                        child: Text(
+                          "Profil Sayfam",
+                          style: _style,
+                        ),
+                      ),
+          ],
+        ),
       ),
+
       // body: TabBarView(
       //   controller: _tabController,children: [
       //     Center(
