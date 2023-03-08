@@ -39,9 +39,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
               ),
             ),
           ),
-          SizedBox(
-            height: 12
-          ), //container 1 tane child alir
+          SizedBox(height: 12), //container 1 tane child alir
           Form(
             key: _formKey,
             child: Padding(
@@ -101,8 +99,8 @@ class _MyProfilePageState extends State<MyProfilePage> {
                             return;
                           }
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            backgroundColor: Colors.green,content: 
-                              Text("Tebrikler giris yapildi")));
+                              backgroundColor: Colors.green,
+                              content: Text("Tebrikler giris yapildi")));
                         },
                         child: const Text(
                           "Giris yap",

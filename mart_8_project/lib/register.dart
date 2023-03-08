@@ -22,7 +22,7 @@ class _MyRegisterPageState extends State<MyRegisterPage> {
         elevation: 0,
         backgroundColor: myPrimaryColor,
         title: const Text(
-          "Sign Up",
+          "Hesap oluştur",
           style: TextStyle(
               color: Colors.white, fontSize: 20, fontWeight: FontWeight.w600),
         ),
@@ -34,7 +34,7 @@ class _MyRegisterPageState extends State<MyRegisterPage> {
             SizedBox(
                 width: MediaQuery.of(context).size.width,
                 height: 250,
-                child: LottieBuilder.asset("assets/lottie/lottie.json")),
+                child: LottieBuilder.asset("assets/lottie/lottie_login.json")),
             Form(
               key: _formKey,
               child: Padding(
@@ -46,11 +46,11 @@ class _MyRegisterPageState extends State<MyRegisterPage> {
                         final bool emailValid = RegExp(
                                 r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                             .hasMatch(value.toString());
-                        return !emailValid ? "Please enter valid e-mail" : null;
+                        return !emailValid ? "Geçerli bir email giriniz" : null;
                       },
                       controller: _emailController,
                       decoration: InputDecoration(
-                        hintText: "Enter E-Mail",
+                        hintText: "Email giriniz",
                         border: const OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                         ),
@@ -74,11 +74,11 @@ class _MyRegisterPageState extends State<MyRegisterPage> {
                         if (_passwordController2.text == value) {
                           return null;
                         }
-                        return "Please enter same password";
+                        return "Lütfen aynı şifreyi girin";
                       },
                       controller: _passwordController,
                       decoration: InputDecoration(
-                          hintText: "enter password",
+                          hintText: "Şifrenizi giriniz",
                           border: const OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10))),
@@ -115,11 +115,11 @@ class _MyRegisterPageState extends State<MyRegisterPage> {
                         if (_passwordController.text == value) {
                           return null;
                         }
-                        return "Please enter same password";
+                        return "Lütfen aynı şifreyi girin";
                       },
                       controller: _passwordController2,
                       decoration: InputDecoration(
-                          hintText: "Enter password again",
+                          hintText: "Şifrenizi tekrar giriniz",
                           border: const OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10))),
@@ -156,18 +156,18 @@ class _MyRegisterPageState extends State<MyRegisterPage> {
                           style: OutlinedButton.styleFrom(
                               backgroundColor: myPrimaryColor,
                               shape: const StadiumBorder()),
-                          onPressed: () {
+                          onPressed: () async {
                             if (!_formKey.currentState!.validate()) {
                               ScaffoldMessenger.of(context)
                                   .showSnackBar(const SnackBar(
                                       backgroundColor: Colors.red,
                                       content: Text(
-                                        "Please check all fields!",
+                                        "Lütfen alanlarınızı kontrol edin!",
                                         style: TextStyle(color: Colors.white),
                                       )));
                               return;
                             }
-
+                            Navigator.pop(context);
                             ScaffoldMessenger.of(context)
                                 .showSnackBar(const SnackBar(
                                     backgroundColor: myPrimaryColor,
@@ -182,7 +182,9 @@ class _MyRegisterPageState extends State<MyRegisterPage> {
                           )),
                     ),
                     TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
                         child: const Text(
                           "Zaten bir hesabın var mı? Giriş yap",
                           style: TextStyle(color: myPrimaryColor),

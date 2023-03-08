@@ -3,6 +3,8 @@ import 'package:mart_8_project/home_page.dart';
 import 'package:mart_8_project/login_page.dart';
 import 'package:mart_8_project/register.dart';
 
+import 'home_page.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -19,7 +21,7 @@ class MyApp extends StatelessWidget {
       // theme: ThemeData.dark(),
       theme: ThemeData(
         useMaterial3: false,
-        primarySwatch: Colors.blueGrey,
+        primarySwatch: Colors.blue,
       ),
       home: const MyLoginPage(),
     );

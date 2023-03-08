@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:mart_8_project/home_page.dart';
 import 'package:mart_8_project/register.dart';
+import 'package:mart_8_project/tab_sub_widgets/home.dart';
+
+import 'tab_subwidgets/home.dart';
 
 class MyLoginPage extends StatefulWidget {
   const MyLoginPage({super.key});
@@ -127,7 +131,10 @@ class _MyLoginPageState extends State<MyLoginPage> {
                                       )));
                               return;
                             }
-
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const HomePage()));
                             ScaffoldMessenger.of(context)
                                 .showSnackBar(const SnackBar(
                                     backgroundColor: myPrimaryColor,
@@ -141,13 +148,16 @@ class _MyLoginPageState extends State<MyLoginPage> {
                             style: TextStyle(color: Colors.white, fontSize: 18),
                           )),
                     ),
+                    const SizedBox(
+                      height: 12,
+                    ),
                     TextButton(
                         onPressed: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => MyRegisterPage(),
-                              ));
+                                  builder: (context) =>
+                                      const MyRegisterPage()));
                         },
                         child: const Text(
                           "Hesabın yok mu? Kayıt ol",
