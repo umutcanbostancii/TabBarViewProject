@@ -22,36 +22,56 @@ class _MyHomePageState extends State<MyHomePage>
     return Scaffold(
       appBar: AppBar(
         title: const Text("Ana Sayfa"),
-        titleTextStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-        bottom: TabBar(controller: _tabController, tabs: const [
-          Icon(Icons.home),
-          Icon(Icons.abc),
-          Icon(Icons.person),
+        titleTextStyle:
+            const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+        bottom: TabBar(controller: _tabController, tabs: [
+          IconButton(
+            icon: Icon(Icons.home),
+            onPressed: () {
+              setState(() {
+                _tabController.index = 0;
+              });
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.abc),
+            onPressed: () {
+              _tabController.index = 1;
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.person),
+            onPressed: () {
+              _tabController.index = 2;
+            },
+          ),
         ]),
       ),
-      body: TabBarView(
-        controller: _tabController,
-        children: [
-          Center(
-            child: Text(
-              "Ana Sayfam",
-              style: _style,
-            ),
-          ),
-          Center(
-            child: Text(
-              "Egitim Sayfam",
-              style: _style,
-            ),
-          ),
-          Center(
-            child: Text(
-              "Profil Sayfam",
-              style: _style,
-            ),
-          ),
-        ],
+      body: Column(
+        children: [],
       ),
+      // body: TabBarView(
+      //   controller: _tabController,children: [
+      //     Center(
+      //       child: Text(
+      //         "Ana Sayfam",
+      //         style: _style,
+      //       ),
+      //     ),
+      //     Center(
+      //       child: Text(
+      //         "Egitim Sayfam",
+      //         style: _style,
+      //       ),
+      //     ),
+      //     Center(
+      //       child: Text(
+      //         "Profil Sayfam",
+      //         style: _style,
+      //       ),
+      //     ),
+      //   ],
+      // ),
     );
   }
 
