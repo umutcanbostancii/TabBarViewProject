@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mart_8_project/home_page.dart';
 import 'package:mart_8_project/login_page.dart';
+import 'package:mart_8_project/register.dart';
 
 void main() {
   runApp(const MyApp());

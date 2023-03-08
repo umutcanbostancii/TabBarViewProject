@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:mart_8_project/register.dart';
 
-class MyLoginPage extends StatefulWidget {
-  const MyLoginPage({super.key});
+class MyRegisterPage extends StatefulWidget {
+  const MyRegisterPage({super.key});
 
   @override
-  State<MyLoginPage> createState() => _MyLoginPageState();
+  State<MyRegisterPage> createState() => _MyRegisterPageState();
 }
 
-class _MyLoginPageState extends State<MyLoginPage> {
+class _MyRegisterPageState extends State<MyRegisterPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  String email = "deneme@mail.com";
-  String password = "123";
+  final TextEditingController _passwordController2 = TextEditingController();
+
   bool isVisibility = false;
   @override
   Widget build(BuildContext context) {
@@ -23,7 +22,7 @@ class _MyLoginPageState extends State<MyLoginPage> {
         elevation: 0,
         backgroundColor: myPrimaryColor,
         title: const Text(
-          "Giriş Yap",
+          "Sign Up",
           style: TextStyle(
               color: Colors.white, fontSize: 20, fontWeight: FontWeight.w600),
         ),
@@ -47,11 +46,11 @@ class _MyLoginPageState extends State<MyLoginPage> {
                         final bool emailValid = RegExp(
                                 r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                             .hasMatch(value.toString());
-                        return !emailValid ? "Geçerli bir email giriniz" : null;
+                        return !emailValid ? "Please enter valid e-mail" : null;
                       },
                       controller: _emailController,
                       decoration: InputDecoration(
-                        hintText: "Email giriniz",
+                        hintText: "Enter E-Mail",
                         border: const OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                         ),
@@ -72,14 +71,55 @@ class _MyLoginPageState extends State<MyLoginPage> {
                       obscureText: !isVisibility,
                       obscuringCharacter: "*",
                       validator: (value) {
-                        if (password == value) {
+                        if (_passwordController2.text == value) {
                           return null;
                         }
-                        return "Lütfen şifreyi 123 girin";
+                        return "Please enter same password";
                       },
                       controller: _passwordController,
                       decoration: InputDecoration(
-                          hintText: "Şifrenizi giriniz",
+                          hintText: "enter password",
+                          border: const OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10))),
+                          prefixIcon: const Icon(
+                            Icons.lock,
+                            color: myPrimaryColor,
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(16),
+                              borderSide: const BorderSide(
+                                color: myPrimaryColor,
+                                width: 2,
+                              )),
+                          suffixIcon: InkWell(
+                              onTap: () {
+                                setState(() {
+                                  isVisibility = !isVisibility;
+                                });
+                              },
+                              child: Icon(
+                                isVisibility == true
+                                    ? Icons.visibility
+                                    : Icons.visibility_off,
+                                color: myPrimaryColor,
+                              ))),
+                    ),
+                    const SizedBox(
+                      height: 12,
+                    ),
+                    TextFormField(
+                      obscureText: !isVisibility,
+                      obscuringCharacter: "*",
+                      validator: (value) {
+                        if (_passwordController.text == value) {
+                          return null;
+                        }
+                        return "Please enter same password";
+                      },
+                      controller: _passwordController2,
+                      decoration: InputDecoration(
+                          hintText: "Enter password again",
                           border: const OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10))),
@@ -122,7 +162,7 @@ class _MyLoginPageState extends State<MyLoginPage> {
                                   .showSnackBar(const SnackBar(
                                       backgroundColor: Colors.red,
                                       content: Text(
-                                        "Lütfen alanlarınızı kontrol edin!",
+                                        "Please check all fields!",
                                         style: TextStyle(color: Colors.white),
                                       )));
                               return;
@@ -132,25 +172,19 @@ class _MyLoginPageState extends State<MyLoginPage> {
                                 .showSnackBar(const SnackBar(
                                     backgroundColor: myPrimaryColor,
                                     content: Text(
-                                      "Tebrikler giriş yapıldı",
+                                      "Tebrikler hesabınız başarı ile oluşturuldu",
                                       style: TextStyle(color: Colors.white),
                                     )));
                           },
                           child: const Text(
-                            "Giriş yap",
+                            "Kayıt yap",
                             style: TextStyle(color: Colors.white, fontSize: 18),
                           )),
                     ),
                     TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => MyRegisterPage(),
-                              ));
-                        },
+                        onPressed: () {},
                         child: const Text(
-                          "Hesabın yok mu? Kayıt ol",
+                          "Zaten bir hesabın var mı? Giriş yap",
                           style: TextStyle(color: myPrimaryColor),
                         ))
                   ],
