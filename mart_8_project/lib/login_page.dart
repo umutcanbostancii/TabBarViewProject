@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:mart_8_project/home_page.dart';
 import 'package:mart_8_project/register.dart';
 import 'package:mart_8_project/tab_sub_widgets/home.dart';
-
-import 'tab_subwidgets/home.dart';
 
 class MyLoginPage extends StatefulWidget {
   const MyLoginPage({super.key});
