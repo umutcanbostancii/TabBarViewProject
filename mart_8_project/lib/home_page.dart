@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mart_8_project/tab_sub_widgets/profile_page.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -74,12 +75,7 @@ class _MyHomePageState extends State<MyHomePage>
                           style: _style,
                         ),
                       )
-                    : Center(
-                        child: Text(
-                          "Profil Sayfam",
-                          style: _style,
-                        ),
-                      ),
+                    : const MyProfilePage(),
           ],
         ),
       ),
